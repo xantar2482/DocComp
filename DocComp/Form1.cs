@@ -14,13 +14,12 @@ namespace DocComp
         List<string> jobDescription = new List<string>();
         string[] keywords;
         char[] delim = { ' ', ',', '.', ':', ';', '-'};
-        List<string> trash = new List<string>{"the", "for", "a", "an", "from", "to", "of", "and", "in", "with"};
+        List<string> trash = new List<string>{"the", "for", "a", "an", "from", "to", "of", "and", "in", "with", "their", "as", "will", "this", "on", "one"};
 
 
         public Form1()
         {
-            InitializeComponent();
-            
+            InitializeComponent();            
         }
 
         private void btn_LoadResume_Click(object sender, EventArgs e)
@@ -111,6 +110,8 @@ namespace DocComp
             List<string> merged = listCheck.Concat(listCheck2).ToList();
             List<string> merged2 = merged.Except(trash).ToList();
 
+            lbl_mergedCount.Text = merged2.Count.ToString();
+
             foreach (string s in merged2)
             {
                 listBox3.Items.Add(s);
@@ -120,6 +121,16 @@ namespace DocComp
         private void btn_Compare_Click(object sender, EventArgs e)
         {
             compare();
+        }
+
+        private void createKeywordList()
+        {
+
+        }
+
+        private void btn_AddKeyWord_Click(object sender, EventArgs e)
+        {
+            listBox4.Items.Add(tBox_AddKeword.Text.ToString());
         }
     }
 }

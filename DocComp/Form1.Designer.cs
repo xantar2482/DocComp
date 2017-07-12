@@ -40,8 +40,14 @@
             this.lbl_JobCount = new System.Windows.Forms.Label();
             this.lbl_ResCount = new System.Windows.Forms.Label();
             this.listBox3 = new System.Windows.Forms.ListBox();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.btn_AddKeyWord = new System.Windows.Forms.Button();
+            this.tBox_AddKeword = new System.Windows.Forms.TextBox();
+            this.listBox4 = new System.Windows.Forms.ListBox();
+            this.lbl_mergedCount = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // openFileDialog1
@@ -54,6 +60,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.lbl_mergedCount);
             this.groupBox1.Controls.Add(this.listBox3);
             this.groupBox1.Controls.Add(this.listBox2);
             this.groupBox1.Controls.Add(this.listBox1);
@@ -150,11 +157,58 @@
             this.listBox3.Size = new System.Drawing.Size(166, 316);
             this.listBox3.TabIndex = 11;
             // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.listBox4);
+            this.groupBox3.Controls.Add(this.tBox_AddKeword);
+            this.groupBox3.Controls.Add(this.btn_AddKeyWord);
+            this.groupBox3.Location = new System.Drawing.Point(2, 33);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(191, 414);
+            this.groupBox3.TabIndex = 11;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "groupBox3";
+            // 
+            // btn_AddKeyWord
+            // 
+            this.btn_AddKeyWord.Location = new System.Drawing.Point(125, 32);
+            this.btn_AddKeyWord.Name = "btn_AddKeyWord";
+            this.btn_AddKeyWord.Size = new System.Drawing.Size(60, 23);
+            this.btn_AddKeyWord.TabIndex = 0;
+            this.btn_AddKeyWord.Text = "Add";
+            this.btn_AddKeyWord.UseVisualStyleBackColor = true;
+            this.btn_AddKeyWord.Click += new System.EventHandler(this.btn_AddKeyWord_Click);
+            // 
+            // tBox_AddKeword
+            // 
+            this.tBox_AddKeword.Location = new System.Drawing.Point(6, 35);
+            this.tBox_AddKeword.Name = "tBox_AddKeword";
+            this.tBox_AddKeword.Size = new System.Drawing.Size(100, 20);
+            this.tBox_AddKeword.TabIndex = 1;
+            // 
+            // listBox4
+            // 
+            this.listBox4.FormattingEnabled = true;
+            this.listBox4.Location = new System.Drawing.Point(6, 113);
+            this.listBox4.Name = "listBox4";
+            this.listBox4.Size = new System.Drawing.Size(179, 290);
+            this.listBox4.TabIndex = 2;
+            // 
+            // lbl_mergedCount
+            // 
+            this.lbl_mergedCount.Location = new System.Drawing.Point(459, 361);
+            this.lbl_mergedCount.Name = "lbl_mergedCount";
+            this.lbl_mergedCount.Size = new System.Drawing.Size(100, 23);
+            this.lbl_mergedCount.TabIndex = 12;
+            this.lbl_mergedCount.Text = "MergedCount";
+            this.lbl_mergedCount.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1160, 535);
+            this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Name = "Form1";
@@ -162,6 +216,8 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -180,6 +236,11 @@
         private System.Windows.Forms.Label lbl_JobCount;
         private System.Windows.Forms.Label lbl_ResCount;
         private System.Windows.Forms.ListBox listBox3;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.ListBox listBox4;
+        private System.Windows.Forms.TextBox tBox_AddKeword;
+        private System.Windows.Forms.Button btn_AddKeyWord;
+        private System.Windows.Forms.Label lbl_mergedCount;
     }
 }
 

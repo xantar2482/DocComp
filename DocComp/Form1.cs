@@ -10,9 +10,11 @@ namespace DocComp
 {
     public partial class Form1 : Form
     {
-        string[] resume;
-        string[] jobDescription;
+        List<string> resume = new List<string>();
+        List<string> jobDescription = new List<string>();
         string[] keywords;
+        char[] delim = { ' ', ',', '.', ':', ';', '-'};
+        List<string> trash = new List<string>{"the", "for", "a", "an", "from", "to", "of", "and", "in", "with"};
 
 
         public Form1()
@@ -34,14 +36,13 @@ namespace DocComp
             if (ofd.ShowDialog() == DialogResult.OK)
             {
                 Microsoft.Office.Interop.Word.Application app = new Microsoft.Office.Interop.Word.Application();
-
-                char[] delim = { '\r','|',' ', ',', '.', ':', ';', '-' };
+                     
                 string filename = ofd.FileName;
                 
                 Document doc = app.Documents.Open(filename);
 
                 string[] parsed = doc.Content.Text.Split(delim).ToArray();
-
+              
                 populateResumeBox(parsed);
                 app.Quit();
                 ofd.Dispose();
@@ -62,13 +63,12 @@ namespace DocComp
             if (ofd.ShowDialog() == DialogResult.OK)
             {
                 Microsoft.Office.Interop.Word.Application app = new Microsoft.Office.Interop.Word.Application();
-
-                char[] delim = { ' ', ',', '.', ':', ';', '-' };
+                                
                 string filename = ofd.FileName;
 
                 Document doc = app.Documents.Open(filename);
 
-                string[] parsed = doc.Content.Text.Split(delim).ToArray();
+                string[] parsed = doc.Content.Text.Split(delim).ToArray();               
 
                 populateJobDescriptionBox(parsed);
                 app.Quit();
@@ -82,8 +82,12 @@ namespace DocComp
 
             foreach (string s in list)
             {
-                listBox1.Items.Add(s);
-            }
+                if (s != "")
+                {
+                    resume.Add(s);
+                    listBox1.Items.Add(s);
+                }
+            }     
         }
 
         private void populateJobDescriptionBox(string[] list)
@@ -92,15 +96,31 @@ namespace DocComp
 
             foreach (string s in list)
             {
-                listBox2.Items.Add(s);
+                if (s != "")
+                {
+                    jobDescription.Add(s);
+                    listBox2.Items.Add(s);
+                }
             }
         }
 
-        private void compare(string[] list, string[] list2)
+        private void compare()
         {
+            List<string> listCheck = resume.Intersect(jobDescription).ToList();
+            List<string> listCheck2= jobDescription.Intersect(resume).ToList();
+            List<string> merged = listCheck.Concat(listCheck2).ToList();
+            List<string> merged2 = merged.Except(trash).ToList();
 
+            foreach (string s in merged2)
+            {
+                listBox3.Items.Add(s);
+            }
         }
 
+        private void btn_Compare_Click(object sender, EventArgs e)
+        {
+            compare();
+        }
     }
 }
 

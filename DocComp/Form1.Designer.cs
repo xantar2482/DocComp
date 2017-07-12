@@ -31,14 +31,15 @@
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.openFileDialog2 = new System.Windows.Forms.OpenFileDialog();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.btn_Compare = new System.Windows.Forms.Button();
+            this.listBox2 = new System.Windows.Forms.ListBox();
+            this.listBox1 = new System.Windows.Forms.ListBox();
             this.btn_LoadJobDesc = new System.Windows.Forms.Button();
             this.btn_LoadResume = new System.Windows.Forms.Button();
+            this.btn_Compare = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.listBox1 = new System.Windows.Forms.ListBox();
-            this.listBox2 = new System.Windows.Forms.ListBox();
-            this.lbl_ResCount = new System.Windows.Forms.Label();
             this.lbl_JobCount = new System.Windows.Forms.Label();
+            this.lbl_ResCount = new System.Windows.Forms.Label();
+            this.listBox3 = new System.Windows.Forms.ListBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -53,6 +54,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.listBox3);
             this.groupBox1.Controls.Add(this.listBox2);
             this.groupBox1.Controls.Add(this.listBox1);
             this.groupBox1.Controls.Add(this.btn_LoadJobDesc);
@@ -64,18 +66,25 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "groupBox1";
             // 
-            // btn_Compare
+            // listBox2
             // 
-            this.btn_Compare.Location = new System.Drawing.Point(68, 33);
-            this.btn_Compare.Name = "btn_Compare";
-            this.btn_Compare.Size = new System.Drawing.Size(75, 23);
-            this.btn_Compare.TabIndex = 9;
-            this.btn_Compare.Text = "Compare";
-            this.btn_Compare.UseVisualStyleBackColor = true;
+            this.listBox2.FormattingEnabled = true;
+            this.listBox2.Location = new System.Drawing.Point(258, 19);
+            this.listBox2.Name = "listBox2";
+            this.listBox2.Size = new System.Drawing.Size(166, 316);
+            this.listBox2.TabIndex = 10;
+            // 
+            // listBox1
+            // 
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.Location = new System.Drawing.Point(86, 19);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(166, 316);
+            this.listBox1.TabIndex = 9;
             // 
             // btn_LoadJobDesc
             // 
-            this.btn_LoadJobDesc.Location = new System.Drawing.Point(428, 360);
+            this.btn_LoadJobDesc.Location = new System.Drawing.Point(300, 361);
             this.btn_LoadJobDesc.Name = "btn_LoadJobDesc";
             this.btn_LoadJobDesc.Size = new System.Drawing.Size(75, 23);
             this.btn_LoadJobDesc.TabIndex = 8;
@@ -93,6 +102,16 @@
             this.btn_LoadResume.UseVisualStyleBackColor = true;
             this.btn_LoadResume.Click += new System.EventHandler(this.btn_LoadResume_Click);
             // 
+            // btn_Compare
+            // 
+            this.btn_Compare.Location = new System.Drawing.Point(68, 33);
+            this.btn_Compare.Name = "btn_Compare";
+            this.btn_Compare.Size = new System.Drawing.Size(75, 23);
+            this.btn_Compare.TabIndex = 9;
+            this.btn_Compare.Text = "Compare";
+            this.btn_Compare.UseVisualStyleBackColor = true;
+            this.btn_Compare.Click += new System.EventHandler(this.btn_Compare_Click);
+            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.lbl_JobCount);
@@ -105,21 +124,14 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "groupBox2";
             // 
-            // listBox1
+            // lbl_JobCount
             // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(86, 19);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(166, 316);
-            this.listBox1.TabIndex = 9;
-            // 
-            // listBox2
-            // 
-            this.listBox2.FormattingEnabled = true;
-            this.listBox2.Location = new System.Drawing.Point(374, 19);
-            this.listBox2.Name = "listBox2";
-            this.listBox2.Size = new System.Drawing.Size(166, 316);
-            this.listBox2.TabIndex = 10;
+            this.lbl_JobCount.AutoSize = true;
+            this.lbl_JobCount.Location = new System.Drawing.Point(31, 102);
+            this.lbl_JobCount.Name = "lbl_JobCount";
+            this.lbl_JobCount.Size = new System.Drawing.Size(49, 13);
+            this.lbl_JobCount.TabIndex = 11;
+            this.lbl_JobCount.Text = "jobCount";
             // 
             // lbl_ResCount
             // 
@@ -130,14 +142,13 @@
             this.lbl_ResCount.TabIndex = 10;
             this.lbl_ResCount.Text = "resCount";
             // 
-            // lbl_JobCount
+            // listBox3
             // 
-            this.lbl_JobCount.AutoSize = true;
-            this.lbl_JobCount.Location = new System.Drawing.Point(31, 102);
-            this.lbl_JobCount.Name = "lbl_JobCount";
-            this.lbl_JobCount.Size = new System.Drawing.Size(49, 13);
-            this.lbl_JobCount.TabIndex = 11;
-            this.lbl_JobCount.Text = "jobCount";
+            this.listBox3.FormattingEnabled = true;
+            this.listBox3.Location = new System.Drawing.Point(430, 19);
+            this.listBox3.Name = "listBox3";
+            this.listBox3.Size = new System.Drawing.Size(166, 316);
+            this.listBox3.TabIndex = 11;
             // 
             // Form1
             // 
@@ -168,6 +179,7 @@
         private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.Label lbl_JobCount;
         private System.Windows.Forms.Label lbl_ResCount;
+        private System.Windows.Forms.ListBox listBox3;
     }
 }
 

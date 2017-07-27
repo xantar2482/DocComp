@@ -279,9 +279,10 @@ namespace DocComp
 
         private void btn_AddDelims_Click(object sender, EventArgs e)
         {
-            char[] temp = richTextBox1.Text.ToCharArray();
-            //char[] temp = tb_Delims.Text.ToCharArray();
             
+            char[] temp = richTextBox1.Text.ToCharArray();
+      
+            delim = delim.Concat(temp).ToArray();
 
         }
 

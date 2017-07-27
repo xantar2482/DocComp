@@ -295,7 +295,7 @@
             this.gb_Delims.Size = new System.Drawing.Size(350, 354);
             this.gb_Delims.TabIndex = 10;
             this.gb_Delims.TabStop = false;
-            this.gb_Delims.Text = "Deliminators";
+            this.gb_Delims.Text = "Delimiters";
             // 
             // btn_RemoveDelims
             // 

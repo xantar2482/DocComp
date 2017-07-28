@@ -4,26 +4,30 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
-using System.Text.RegularExpressions;
-
+using System.Text;
 
 
 namespace DocComp
 {
     public partial class MainForm : Form
     {
+        // //////////////////////////////////
+        //char[] delim = { ' ', ',', '.', ':', ';', '-' };
+        char[] delim = { ' ', ',', '.', ':', ';', '-', '\r', '\t', '\n', '|' };
+        // //////////////////////////////////
+
         List<string> resume;
         List<string> jobDescription;
         List<string> keywords;
         List<string> trash;
-        List<string> results;
-        //List<char> delim;
+        List<string> results;      
 
-        char[] delim = { ' ', ',', '.', ':', ';', '-' };
 
         private bool resLoaded;
         private bool descLoaded;
         private bool ready;
+
+
 
         public MainForm()
         {
@@ -279,10 +283,11 @@ namespace DocComp
 
         private void btn_AddDelims_Click(object sender, EventArgs e)
         {
-            
-            char[] temp = richTextBox1.Text.ToCharArray();
-      
-            delim = delim.Concat(temp).ToArray();
+            string s = richTextBox1.Text;
+            char[] ca = s.ToCharArray();
+
+            int x = Convert.ToInt16(ca[0]);
+            int y = Convert.ToInt16(ca[1]);
 
         }
 

@@ -52,7 +52,6 @@
             this.btn_RemoveDelims = new System.Windows.Forms.Button();
             this.listBox_Delims = new System.Windows.Forms.ListBox();
             this.btn_AddDelims = new System.Windows.Forms.Button();
-            this.tb_Delims = new System.Windows.Forms.TextBox();
             this.btn_FindKeyWords = new System.Windows.Forms.Button();
             this.gb_KeySearch = new System.Windows.Forms.GroupBox();
             this.btn_RemoveItem = new System.Windows.Forms.Button();
@@ -288,7 +287,7 @@
             this.gb_Delims.Controls.Add(this.btn_RemoveDelims);
             this.gb_Delims.Controls.Add(this.listBox_Delims);
             this.gb_Delims.Controls.Add(this.btn_AddDelims);
-            this.gb_Delims.Location = new System.Drawing.Point(4, 619);
+            this.gb_Delims.Location = new System.Drawing.Point(4, 614);
             this.gb_Delims.Margin = new System.Windows.Forms.Padding(6);
             this.gb_Delims.Name = "gb_Delims";
             this.gb_Delims.Padding = new System.Windows.Forms.Padding(6);
@@ -326,14 +325,6 @@
             this.btn_AddDelims.Text = "Add";
             this.btn_AddDelims.UseVisualStyleBackColor = true;
             this.btn_AddDelims.Click += new System.EventHandler(this.btn_AddDelims_Click);
-            // 
-            // tb_Delims
-            // 
-            this.tb_Delims.Location = new System.Drawing.Point(506, 1035);
-            this.tb_Delims.Margin = new System.Windows.Forms.Padding(6);
-            this.tb_Delims.Name = "tb_Delims";
-            this.tb_Delims.Size = new System.Drawing.Size(169, 29);
-            this.tb_Delims.TabIndex = 19;
             // 
             // btn_FindKeyWords
             // 
@@ -495,7 +486,6 @@
             this.Controls.Add(this.gb_KeySearch);
             this.Controls.Add(this.gb_Delims);
             this.Controls.Add(this.gb_ListShow);
-            this.Controls.Add(this.tb_Delims);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Margin = new System.Windows.Forms.Padding(6);
@@ -549,7 +539,6 @@
         private System.Windows.Forms.Button btn_ClearKWBox;
         private System.Windows.Forms.Button btn_RemoveItem;
         private System.Windows.Forms.Button btn_RemoveDelims;
-        private System.Windows.Forms.TextBox tb_Delims;
         private System.Windows.Forms.ListBox listBox_Delims;
         private System.Windows.Forms.Button btn_AddDelims;
         private System.Windows.Forms.GroupBox groupBox4;

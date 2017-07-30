@@ -13,14 +13,14 @@ namespace DocComp
     {
         // //////////////////////////////////
         //char[] delim = { ' ', ',', '.', ':', ';', '-' };
-        char[] delim = { ' ', ',', '.', ':', ';', '-', '\r', '\t', '\n', '|' };
+        char[] delim = { ' ', ',', '.', ':', ';', '-', '\n', '|' };
         // //////////////////////////////////
 
         List<string> resume;
         List<string> jobDescription;
         List<string> keywords;
         List<string> trash;
-        List<string> results;      
+        List<string> results;
 
 
         private bool resLoaded;
@@ -90,8 +90,8 @@ namespace DocComp
             if (resLoaded == true && descLoaded == true)
             {
                 ready = true;
-            }           
-            
+            }
+
             if (ready == true)
             {
                 KeySearchReady();
@@ -155,13 +155,24 @@ namespace DocComp
         //  Deliminator Manipulations  //
         private void PopulateDelims()
         {
-            char[] initDelim = {' ', ',', '.', ':', ';', '-'};
+            char[] initDelim = { ' ', ',', '.', ':', ';', '-' };
             //delim.AddRange(initDelim);
         }
 
         private void AddDelims(char addChar)
         {
-            //delim.Add(addChar);
+            List<char> charList = new List<char>();
+
+            foreach (char c in delim)
+            {
+                charList.Add(c);
+            }
+
+            charList.Add(addChar);
+            delim = charList.ToArray();
+            
+
+
         }
 
         private void RemoveDelims(char removeChar)
@@ -172,7 +183,7 @@ namespace DocComp
         private void PopulateDelimBox()
         {
             listBox_Delims.Items.Clear();
-            
+
             foreach (char c in delim)
             {
                 listBox_Delims.Items.Add(c);
@@ -189,18 +200,18 @@ namespace DocComp
             {
                 RestoreDirectory = true,
                 Filter = "Text Files|*.doc;*.docx;*.txt;*.text",
-                FilterIndex = 2                
+                FilterIndex = 2
             };
 
             if (ofd.ShowDialog() == DialogResult.OK)
             {
                 Microsoft.Office.Interop.Word.Application app = new Microsoft.Office.Interop.Word.Application();
-                     
+
                 string filename = ofd.FileName;
-                
-                Document doc = app.Documents.Open(filename);                
+
+                Document doc = app.Documents.Open(filename);
                 string[] parsed = doc.Content.Text.Split(delim).ToArray();
-              
+
                 PopulateResumeBox(parsed);
                 app.Quit();
                 ofd.Dispose();
@@ -212,24 +223,24 @@ namespace DocComp
         private void btn_LoadJobDesc_Click(object sender, EventArgs e)
         {
             jobDescription.Clear();
-            listBox_Description.Items.Clear();            
+            listBox_Description.Items.Clear();
 
             OpenFileDialog ofd = new OpenFileDialog()
 
             {
                 RestoreDirectory = true,
                 Filter = "Text Files|*.doc;*.docx;*.txt;*.text",
-                FilterIndex = 2                
+                FilterIndex = 2
             };
 
             if (ofd.ShowDialog() == DialogResult.OK)
             {
                 Microsoft.Office.Interop.Word.Application app = new Microsoft.Office.Interop.Word.Application();
-                                
+
                 string filename = ofd.FileName;
 
                 Document doc = app.Documents.Open(filename);
-                string[] parsed = doc.Content.Text.Split(delim).ToArray();               
+                string[] parsed = doc.Content.Text.Split(delim).ToArray();
 
                 PopulateJobDescriptionBox(parsed);
                 app.Quit();
@@ -237,7 +248,7 @@ namespace DocComp
 
                 descLoaded = true;
             }
-        }        
+        }
 
         private void btn_Compare_Click(object sender, EventArgs e)
         {
@@ -265,7 +276,7 @@ namespace DocComp
             if (rb_FindInBoth.Checked == true)
             {
                 FindKeywordResultsBoth();
-            }         
+            }
         }
 
         private void btn_ClearKWBox_Click(object sender, EventArgs e)
@@ -278,19 +289,37 @@ namespace DocComp
         {
             keywords.Remove(listBox_KeyWordList.SelectedItems.ToString());
             listBox_KeyWordList.Items.Remove(listBox_KeyWordList.SelectedItems);
-            
+
         }
 
         private void btn_AddDelims_Click(object sender, EventArgs e)
         {
             string s = richTextBox1.Text;
-            char[] ca = s.ToCharArray();
-
-            int x = Convert.ToInt16(ca[0]);
-            int y = Convert.ToInt16(ca[1]);
+            AddDelims(GetEscape(s));
+            listBox_Delims.Items.Clear();
+            foreach (char c in delim)
+            {
+                int x = (char)c;
+                listBox_Delims.Items.Add(c.ToString());
+                Console.WriteLine(x);
+            }
 
         }
+        
+        private char GetEscape(string input)
+        {           
 
+            if (input == "\\r")
+            {
+                return (char)13;
+            }
+            if(input == "\\t")
+            {
+                return (char)9;
+            }
+
+            return (char)1;
+        }
 
     }
 }
